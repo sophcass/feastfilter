@@ -39,7 +39,7 @@ Now, create descriptive names for the following restaurants:
 
 # TODO: Get some real examples to input into the <example></example>
 # TODO: Get some examples of the types of titles GenAI creates and use this to come up with exclusions, inclusions - document and discuss this approach in the presentation
-#  
+#
 
 THEMES = ["Service", "Ambiance", "Location", "Food Quality"] # TODO: Any other themes that would be useful?
 SENTIMENT = ["Positive", "Negative", "Neutral"]
