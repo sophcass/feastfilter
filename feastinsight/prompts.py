@@ -66,3 +66,20 @@ Now, create descriptive names for the following restaurants:
 )
 
 # TODO: Get some examples of the types of titles GenAI creates and use this to come up with exclusions, inclusions - document and discuss this approach in the presentation
+
+THEMES = ["Service", "Ambiance", "Location", "Food Quality", "Value for Money"]
+SENTIMENT = ["Positive", "Negative", "Neutral"]
+
+CHATGPT_USER_MESSAGE_SENTIMENT = f"""
+I am going to provide you with a review from a customer of a restaurant.
+Your job is to tag the review with one of the following sentiment: {SENTIMENT}.
+Please output your answer as the sentiment only. Do not include any additional text, explanations, or introductory phrases.
+Here is the review:
+"""
+
+CHATGPT_USER_MESSAGE_THEME = f"""
+I am going to provide you with a review from a customer of a restaurant.
+Your job is to tag the review with one of the following themes: {THEMES}.
+Please output your answer as the sentiment only. Do not include any additional text, explanations, or introductory phrases.
+Here is the review:
+"""
