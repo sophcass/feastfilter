@@ -1,0 +1,10 @@
+# Ignore my virtual env
+venv/
+.venv/
+
+# cached files
+__pycache__/
+
+
+# database
+db.sqlite3
