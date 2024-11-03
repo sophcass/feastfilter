@@ -34,6 +34,7 @@ def get_places_data():
         for restaurant in restaurants:
             # Restaurant information
             name = restaurant["displayName"]["text"]
+            id = restaurant["id"]
             formatted_address = restaurant["formattedAddress"]
             location_latitude = restaurant["location"]["latitude"]
             location_longitude = restaurant["location"]["longitude"]
@@ -44,6 +45,7 @@ def get_places_data():
                 rating = None
 
             place = Place(
+                id=id,
                 name=name,
                 formatted_address=formatted_address,
                 location_latitude=location_latitude,
