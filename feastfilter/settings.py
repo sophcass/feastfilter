@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "feastinsight"
 ]
 
 MIDDLEWARE = [
@@ -123,3 +122,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# API KEYS
+OPEN_AI_API_KEY = ""
+CLAUDE_API_KEY = ""
