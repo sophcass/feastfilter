@@ -21,6 +21,7 @@ def add_sentiment_of_review(review: Review) -> None:
     """
     pass
 
+
 def add_theme_of_review(review: Review) -> None:
     """
     Identifies the main theme(s) of the given review and updates the review
@@ -38,6 +39,7 @@ def add_theme_of_review(review: Review) -> None:
         None
     """
     pass
+
 
 def add_short_description(place: Place) -> None:
     """

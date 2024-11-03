@@ -12,19 +12,16 @@ def get_places_data():
         "includedTypes": ["restaurant"],
         "locationRestriction": {
             "circle": {
-                "center": {
-                    "latitude": 51.52789,
-                    "longitude": -0.08173
-                },
-                "radius": 1000
+                "center": {"latitude": 51.52789, "longitude": -0.08173},
+                "radius": 1000,
             }
-        }
+        },
     }
 
     headers = {
         "Content-Type": "application/json",
         "X-Goog-Api-Key": "",  # TODO: What is the best way to share this
-        "X-Goog-FieldMask": "places.displayName.text,places.id,places.types,places.reviews,places.rating,places.primaryTypeDisplayName.text,places.reviews,places.location,places.formattedAddress"
+        "X-Goog-FieldMask": "places.displayName.text,places.id,places.types,places.reviews,places.rating,places.primaryTypeDisplayName.text,places.reviews,places.location,places.formattedAddress",
     }
 
     response = requests.post(url, json=data, headers=headers)
@@ -51,12 +48,12 @@ def get_places_data():
                 location_latitude=location_latitude,
                 location_longitude=location_longitude,
                 type_displayname=type_displayname,
-                rating=rating
-                )
+                rating=rating,
+            )
             place.save()
-            
+
             # Review information
-            if "reviews" in  restaurant.keys():
+            if "reviews" in restaurant.keys():
                 reviews = restaurant["reviews"]
                 for review in reviews:
                     if "originalText" not in review.keys():
@@ -64,7 +61,11 @@ def get_places_data():
                     review_text = review["originalText"]["text"]
                     review_publish_time = review["publishTime"]
 
-                    review = Review(place=place, text=review_text, publish_time=review_publish_time)
-                    review.save()        
+                    review = Review(
+                        place=place, text=review_text, publish_time=review_publish_time
+                    )
+                    review.save()
     else:
-        print(f"Request failed with status code {response.status_code}: {response.text}")
+        print(
+            f"Request failed with status code {response.status_code}: {response.text}"
+        )
