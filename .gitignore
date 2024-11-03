@@ -4,3 +4,7 @@ venv/
 
 # cached files
 __pycache__/
+
+
+# database
+db.sqlite3
