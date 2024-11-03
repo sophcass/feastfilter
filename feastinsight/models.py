@@ -8,9 +8,12 @@ class Place(models.Model):
     location_longitude = models.FloatField()
     type_displayname = models.TextField(null=True, blank=True)
     rating = models.FloatField(null=True, blank=True)
+    enhanced_name = models.TextField(null=True, blank=True)
 
 
 class Review(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
     text = models.TextField()
     publish_time = models.DateTimeField()
+    sentiment = models.TextField(null=True, blank=True)
+    theme = models.TextField(null=True, blank=True)
