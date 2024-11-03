@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "feastfilter"
+version = "0.1.0"
+description = "A Django app to find your perfect restaurant using GenAI"
+authors = ["Sophie Cassidy <sophieanne.cassidy@gmail.com>", "Ratuja Reddy <ratuja@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Django = "*"
+openai = "*"
+requests = "*"
+ruff = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
