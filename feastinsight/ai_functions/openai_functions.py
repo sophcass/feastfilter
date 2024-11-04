@@ -1,6 +1,7 @@
 from openai import OpenAI
 from feastinsight.models import Place, Review
 
+# Add API Key & Organization ID before running
 ORGANIZATION_ID = ""
 API_KEY = ""
 
