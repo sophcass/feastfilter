@@ -15,7 +15,7 @@ class PlaceAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ["place__name", "text"]
+    list_display = ["place__name", "text", "sentiment"]
     search_fields = ["place__name"]
     # TODO: Do we want to make some fields readonly?
     # readonly_fields = (

@@ -1,7 +1,14 @@
-from django.conf import settings
-import openai
-from .models import Place, Review
+from openai import OpenAI
+from feastinsight.models import Place, Review
 
+# Add API Key & Organization ID before running
+ORGANIZATION_ID = ""
+API_KEY = ""
+
+client = OpenAI(
+    organization=ORGANIZATION_ID,
+    api_key=API_KEY
+)
 
 def add_sentiment_of_review(review: Review) -> None:
     """
@@ -19,8 +26,55 @@ def add_sentiment_of_review(review: Review) -> None:
     Returns:
         None
     """
-    pass
+    ROLE_CONTENT = "You are a analyst parsing customer reviews about their restaurant experience."
 
+    SENTIMENT = ["Positive", "Negative", "Neutral"]
+
+    OPENAI_USER_MESSAGE_SENTIMENT = f"""
+    I am going to provide you with a review from a customer of a restaurant.
+    Your job is to tag the review with one of the following sentiment: {SENTIMENT}.
+    Please output your answer as the sentiment only. Do not include any additional text,
+    explanations, or introductory phrases.
+    Here is the review:
+    """
+
+    try:
+        review_text = review.text
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {
+                    "role": "system",
+                    "content": ROLE_CONTENT,
+                },
+                {
+                "role": "user",
+                "content": [
+                    {
+                    "type": "text",
+                    "text": OPENAI_USER_MESSAGE_SENTIMENT + review_text
+                    }
+                ]
+                },
+            ],
+            temperature=1,
+            max_tokens=2048,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0,
+            response_format={
+                "type": "text"
+            }
+        )
+
+        sentiment = response.choices[0].message.content
+
+        review.sentiment = sentiment
+        review.save()
+
+    except Exception as e:
+        print(f"Error analyzing sentiment: {e}")
 
 def add_theme_of_review(review: Review) -> None:
     """
@@ -39,7 +93,6 @@ def add_theme_of_review(review: Review) -> None:
         None
     """
     pass
-
 
 def add_short_description(place: Place) -> None:
     """
