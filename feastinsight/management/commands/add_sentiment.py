@@ -12,3 +12,5 @@ class Command(BaseCommand):
         for review in reviews.iterator():
             add_sentiment_of_review(review)
 
+        DJANGO_ADMIN_URL = "http://127.0.0.1:8000/admin/feastinsight/review/"
+        print(f"Finished tagging sentiment! Please visit {DJANGO_ADMIN_URL} to view results.")
