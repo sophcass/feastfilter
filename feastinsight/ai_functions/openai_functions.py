@@ -42,7 +42,7 @@ def add_sentiment_of_review(review: Review) -> None:
         review_text = review.text
 
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4-mini",
             messages=[
                 {
                     "role": "system",
