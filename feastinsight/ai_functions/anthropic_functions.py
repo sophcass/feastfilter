@@ -47,8 +47,6 @@ def add_sentiment_of_review(review: Review) -> None:
             ],
         )
 
-        breakpoint()
-
         sentiment = response.content[0].text
 
         review.sentiment = sentiment
