@@ -42,7 +42,7 @@ def add_sentiment_of_review(review: Review) -> None:
         review_text = review.text
 
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4-mini",
             messages=[
                 {
                     "role": "system",
@@ -71,6 +71,7 @@ def add_sentiment_of_review(review: Review) -> None:
         sentiment = response.choices[0].message.content
 
         review.sentiment = sentiment
+        print(f"Successfully tagged sentiment for review {review.id}")
         review.save()
 
     except Exception as e:
@@ -103,6 +104,9 @@ def add_short_description(place: Place) -> None:
     such as its type, notable features, or specialties. The generated description is
     added to the place object.
     The update is done in place, so the function does not return any value.
+
+    Have a think about what information you need to pass in to the OpenAI model to
+    get the best result.
 
     Args:
         place (Place): The place object to generate and update with a short description.
