@@ -1,14 +1,8 @@
 from openai import OpenAI
 from feastinsight.models import Place, Review
 
-# Add API Key & Organization ID before running
-ORGANIZATION_ID = ""
-API_KEY = ""
 
-client = OpenAI(
-    organization=ORGANIZATION_ID,
-    api_key=API_KEY
-)
+client = OpenAI()
 
 def add_sentiment_of_review(review: Review) -> None:
     """
