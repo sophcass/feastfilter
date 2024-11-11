@@ -47,9 +47,10 @@ def add_sentiment_of_review(review: Review) -> None:
             ],
         )
 
+
         sentiment = response.content[0].text
 
-        review.sentiment = sentiment
+        review.anthropic_sentiment = sentiment
         print(f"Successfully tagged sentiment for review {review.id}")
         review.save()
 

@@ -70,7 +70,7 @@ def add_sentiment_of_review(review: Review) -> None:
 
         sentiment = response.choices[0].message.content
 
-        review.sentiment = sentiment
+        review.openai_sentiment = sentiment
         print(f"Successfully tagged sentiment for review {review.id}")
         review.save()
 
