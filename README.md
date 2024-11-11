@@ -19,13 +19,16 @@ Ensure you have Python 3.12 installed. If not, you can download and install it f
    python -m venv venv
 
 4. Activate the virtual environment:
-   - **Windows**:
-  ```bash
+
+  - **Windows**:
+  ```
   .\venv\Scripts\activate
+  ```
 
   - **MacOS/Linux**:
-  ```bash
+  ```
   source venv/bin/activate
+  ```
 
 5. Install the project dependencies from requirements.txt:
     ```bash
@@ -33,24 +36,29 @@ Ensure you have Python 3.12 installed. If not, you can download and install it f
 
 6. Set the Django settings module environment variable:
    - **Windows**:
-  ```bash
+  ```
   set DJANGO_SETTINGS_MODULE=feastfilter.settings
+  set PYTHONPATH=%cd%
+  ```
 
   - **MacOS/Linux**:
-  ```bash
+  ```
   export DJANGO_SETTINGS_MODULE=feastfilter.settings
+  export PYTHONPATH=$(pwd)
+  ```
 
 7. Start the Django Development Server
 
- ```bash
+ ```
    django-admin runserver
+ ```
 
-Visit http://127.0.0.1:8000/admin/ to view and explore the existing data in the Django admin.
+Visit `http://127.0.0.1:8000/admin/` to view and explore the existing data in the Django admin.
 
 Log in with the following:
 
-User: pyconsweden
-Password: aiworkshop
+ - User: `pyconsweden`
+ - Password: `aiworkshop`
 
 ## Your Challenge
 1. Tag each review with the sentiment of the review, i.e., if it’s positive, negative, or neutral.
