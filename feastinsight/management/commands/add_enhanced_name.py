@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 
 from feastinsight.models import Place
-from feastinsight.ai_functions.openai_functions import add_short_description
+from feastinsight.ai_functions.openai_functions import add_enhanced_name
 
 class Command(BaseCommand):
     help = "Add enhanced name to all restaurants"
@@ -19,7 +19,7 @@ class Command(BaseCommand):
 
         for restaurant in restaurants.iterator():
             if not restaurant.enhanced_name or force:
-                add_short_description(restaurant)
+                add_enhanced_name(restaurant)
             else:
                 print(
                     f"Already populated enhanced_name for restaurant {restaurant.id}\n"
