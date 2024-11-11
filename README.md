@@ -35,7 +35,7 @@ Ensure you have Python 3.12 installed. If not, you can download and install it f
     pip install -r requirements.txt
 
 6. Set the Django settings module environment variable:
-   - **Windows**:
+  - **Windows**:
   ```
   set DJANGO_SETTINGS_MODULE=feastfilter.settings
   set PYTHONPATH=%cd%
