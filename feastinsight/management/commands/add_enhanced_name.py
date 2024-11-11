@@ -18,19 +18,19 @@ class Command(BaseCommand):
             help="Use OpenAI function to get the enhanced name"
         )
         parser.add_argument(
-            "--claude",
+            "--anthropic",
             action="store_true",
-            help="Use Claude function to get the enhanced name"
+            help="Use Anthropic function to get the enhanced name"
         )
 
     def handle(self, *args, **options):
         restaurants = Place.objects.all()
         force = options["force"]
 
-        if options["open_ai"] and options["claude"]:
-            raise CommandError("Cannot specify both --open-ai and --claude. Choose one.")
-        elif not options["open_ai"] and not options["claude"]:
-            raise CommandError("You must specify either --open-ai or --claude.")
+        if options["open_ai"] and options["anthropic"]:
+            raise CommandError("Cannot specify both --open-ai and --anthropic. Choose one.")
+        elif not options["open_ai"] and not options["anthropic"]:
+            raise CommandError("You must specify either --open-ai or --anthropic.")
 
         if options["open_ai"]:
             add_enhanced_name = openai_functions.add_enhanced_name

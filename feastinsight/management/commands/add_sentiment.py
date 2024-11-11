@@ -17,21 +17,21 @@ class Command(BaseCommand):
             help="Use OpenAI function to get the enhanced name",
         )
         parser.add_argument(
-            "--claude",
+            "--anthropic",
             action="store_true",
-            help="Use Claude function to get the enhanced name",
+            help="Use Anthropic function to get the enhanced name",
         )
 
     def handle(self, *args, **options):
         reviews = Review.objects.all()
         force = options["force"]
 
-        if options["open_ai"] and options["claude"]:
+        if options["open_ai"] and options["anthropic"]:
             raise CommandError(
-                "Cannot specify both --open-ai and --claude. Choose one."
+                "Cannot specify both --open-ai and --anthropic. Choose one."
             )
-        elif not options["open_ai"] and not options["claude"]:
-            raise CommandError("You must specify either --open-ai or --claude.")
+        elif not options["open_ai"] and not options["anthropic"]:
+            raise CommandError("You must specify either --open-ai or --anthropic.")
 
         if options["open_ai"]:
             add_sentiment_of_review = openai_functions.add_sentiment_of_review
@@ -45,7 +45,7 @@ class Command(BaseCommand):
             else:
                 existing_review = review.anthropic_sentiment
 
-            if existing_review or force:
+            if not existing_review or force:
                 add_sentiment_of_review(review)
             else:
                 print(
