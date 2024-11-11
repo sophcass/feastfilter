@@ -12,7 +12,7 @@ def get_places_data():
         "includedTypes": ["restaurant"],
         "locationRestriction": {
             "circle": {
-                "center": {"latitude": 51.52789, "longitude": -0.08173},
+                "center": {"latitude": 59.3293, "longitude": 18.0686},
                 "radius": 1000,
             }
         },
@@ -29,42 +29,45 @@ def get_places_data():
     if response.status_code == 200:
         restaurants = response.json()["places"]
         for restaurant in restaurants:
-            # Restaurant information
-            name = restaurant["displayName"]["text"]
-            id = restaurant["id"]
-            formatted_address = restaurant["formattedAddress"]
-            location_latitude = restaurant["location"]["latitude"]
-            location_longitude = restaurant["location"]["longitude"]
-            type_displayname = restaurant["primaryTypeDisplayName"]["text"]
-            if "rating" in restaurant.keys():
-                rating = restaurant["rating"]
-            else:
-                rating = None
+            try:
+                # Restaurant information
+                name = restaurant["displayName"]["text"]
+                id = restaurant["id"]
+                formatted_address = restaurant["formattedAddress"]
+                location_latitude = restaurant["location"]["latitude"]
+                location_longitude = restaurant["location"]["longitude"]
+                type_displayname = restaurant["primaryTypeDisplayName"]["text"]
+                if "rating" in restaurant.keys():
+                    rating = restaurant["rating"]
+                else:
+                    rating = None
 
-            place = Place(
-                id=id,
-                name=name,
-                formatted_address=formatted_address,
-                location_latitude=location_latitude,
-                location_longitude=location_longitude,
-                type_displayname=type_displayname,
-                rating=rating,
-            )
-            place.save()
+                place = Place(
+                    id=id,
+                    name=name,
+                    formatted_address=formatted_address,
+                    location_latitude=location_latitude,
+                    location_longitude=location_longitude,
+                    type_displayname=type_displayname,
+                    rating=rating,
+                )
+                place.save()
 
-            # Review information
-            if "reviews" in restaurant.keys():
-                reviews = restaurant["reviews"]
-                for review in reviews:
-                    if "originalText" not in review.keys():
-                        continue
-                    review_text = review["originalText"]["text"]
-                    review_publish_time = review["publishTime"]
+                # Review information
+                if "reviews" in restaurant.keys():
+                    reviews = restaurant["reviews"]
+                    for review in reviews:
+                        if "originalText" not in review.keys():
+                            continue
+                        review_text = review["originalText"]["text"]
+                        review_publish_time = review["publishTime"]
 
-                    review = Review(
-                        place=place, text=review_text, publish_time=review_publish_time
-                    )
-                    review.save()
+                        review = Review(
+                            place=place, text=review_text, publish_time=review_publish_time
+                        )
+                        review.save()
+            except:
+                print("Issue getting restaurant ", restaurant["displayName"]["text"])
     else:
         print(
             f"Request failed with status code {response.status_code}: {response.text}"
