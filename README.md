@@ -3,6 +3,14 @@ A Django app that helps you find your perfect restaurant using GenAI
 
 ## Setup Instructions
 
+### Join our Discord
+
+Join our Discord [here](https://discord.gg/CCuyvffe)!
+
+You can use this Discord server to share insights, ask questions, post links etc.
+
+We will also post some helpful tips and tricks here during the workshop.
+
 ### Prerequisites
 Ensure you have Python 3.12 installed. If not, you can download and install it from [Python's official website](https://www.python.org/downloads/release/python-3120/).
 
