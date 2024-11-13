@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FeastInsight - Mastering Generative AI Workshop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff7e5f;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #555;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 25px;
+            font-size: 1em;
+            font-weight: bold;
+            color: white;
+            background-color: #ff7e5f;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #feb47b;
+        }
+        .features {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .feature {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+        }
+        .feature-icon {
+            font-size: 1.5em;
+            color: #ff7e5f;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to FeastInsight!</h1>
+        <p>Join us on a culinary adventure powered by the latest in Generative AI.</p>
+        <p>This is your personal gateway to "Mastering Generative AI," where we help you discover dining experiences through innovative AI.</p>
+        <a href="{% url 'chat_bot' %}" class="cta-button">Get Your Restaurant Recommendation</a>
+
+        <div class="features">
+            <div class="feature">
+                <span class="feature-icon">🍲</span>
+                <span><strong>AI-Powered Recommendations:</strong> Find the best dining spots based on your cravings.</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">🌍</span>
+                <span><strong>Global Choices:</strong> Discover hidden gems in cities around the world.</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">🔍</span>
+                <span><strong>Model Selection:</strong> Choose between cutting-edge AI models to personalize your results.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

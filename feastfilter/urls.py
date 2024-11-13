@@ -20,5 +20,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("feastinsight/", include('feastinsight.urls')),
+    path("", include('feastinsight.urls')),  # Include the feastinsight URLs at the root
 ]
