@@ -66,7 +66,7 @@ def get_places_data():
                             place=place, text=review_text, publish_time=review_publish_time
                         )
                         review.save()
-            except:
+            except Exception:
                 print("Issue getting restaurant ", restaurant["displayName"]["text"])
     else:
         print(
