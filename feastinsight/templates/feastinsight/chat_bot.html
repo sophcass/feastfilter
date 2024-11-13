@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
+            background-color: #fff3e0;
             margin: 0;
             padding: 0;
             display: flex;
@@ -16,15 +16,16 @@
         }
         .container {
             background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 500px;
+            text-align: center;
         }
         h1 {
-            color: #333;
-            text-align: center;
+            color: #ff8a65;
+            font-size: 2em;
             margin-bottom: 20px;
         }
         form {
@@ -32,48 +33,51 @@
             flex-direction: column;
             gap: 15px;
         }
-        label {
-            font-weight: bold;
-            color: #333;
-        }
-        select {
+        select, input[type="text"] {
             padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            border-radius: 8px;
+            border: 1px solid #ffab91;
             font-size: 16px;
+            background-color: #fff;
+            color: #333;
+            transition: border-color 0.3s;
+        }
+        select:focus, input[type="text"]:focus {
+            border-color: #ff8a65;
+            outline: none;
         }
         button {
-            background-color: #28a745;
+            background-color: #ff8a65;
             color: white;
             border: none;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: bold;
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #ff7043;
         }
         .result {
             margin-top: 20px;
-            background-color: #e9f7ef;
+            background-color: #ffe0b2;
             padding: 20px;
-            border-left: 5px solid #28a745;
+            border-left: 5px solid #ff8a65;
             border-radius: 8px;
             font-family: 'Georgia', serif;
-            text-align: center;
+            color: #333;
         }
         .result h2 {
-            color: #28a745;
-            font-size: 1.2em;
+            color: #ff7043;
+            font-size: 1.5em;
             margin: 0 0 10px;
         }
         .result p {
             font-size: 1.1em;
-            color: #555;
+            color: #333;
             line-height: 1.5;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -83,7 +87,6 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <label for="model_choice">Select AI Model:</label>
             <select name="model_choice" id="model_choice">
                 <option value="" {% if not model_choice %}selected{% endif %}>Select AI Model</option>
                 <option value="openai" {% if model_choice == "openai" %}selected{% endif %}>OpenAI</option>

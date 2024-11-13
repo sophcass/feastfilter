@@ -18,3 +18,6 @@ def chat_bot_view(request):
     else:
         form = TextInputForm()
     return render(request, "feastinsight/chat_bot.html", {'form': form, 'result': result})
+
+def home_view(request):
+    return render(request, "feastinsight/home.html")
