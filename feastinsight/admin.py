@@ -11,5 +11,5 @@ class PlaceAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ["place__name", "text", "openai_sentiment", "anthropic_sentiment"]
+    list_display = ["place__name", "text", "openai_sentiment", "anthropic_sentiment", "openai_theme", "anthropic_theme"]
     search_fields = ["place__name"]
