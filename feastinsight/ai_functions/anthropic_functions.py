@@ -97,3 +97,24 @@ def add_short_description(place: Place) -> None:
         None
     """
     pass
+
+def add_enhanced_name(place: Place) -> None:
+    """
+    Generates a enhanced name for the given place based on its attributes and
+    adds it to the place object.
+
+    This function creates a concise description of the place, summarizing key attributes
+    such as its type, notable features, or specialties. The generated name is
+    added to the place object to the attribute enhanced_name.
+    The update is done in place, so the function does not return any value.
+
+    Have a think about what information you need to pass in to the OpenAI model to
+    get the best result.
+
+    Args:
+        place (Place): The place object to generate and update with an enhanced_name.
+
+    Returns:
+        None
+    """
+    pass
