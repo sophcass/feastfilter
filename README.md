@@ -9,7 +9,7 @@ Join our Discord [here](https://discord.gg/CCuyvffe)!
 You can use this Discord server to share insights, ask questions, post links, etc. We will also post some helpful tips and tricks here during the workshop.
 
 ### Prerequisites
-Ensure you have at least **Python 3.9** installed. If not, download and install it from [Python's official website](https://www.python.org/downloads/release/python-3120/).
+Ensure you have at least **Python 3.10** installed. If not, download and install it from [Python's official website](https://www.python.org/downloads/release/python-3120/).
 
 ### Cloning the Repository
 1. Open your terminal.
